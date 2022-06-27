@@ -42,7 +42,20 @@ class SmartHike {
         return `You have rested for ${time} hours and gained ${timeMultyply}% resources`
     }
     showRecord(criteria) {
-        
+        if (this.listOfHikes.length === 0) {
+            return `${this.username} has not done any hiking yet`;
+          }
+          if (criteria === 'hard' || criteria === 'easy') {
+            const existingHikes = this.listOfHikes.filter((h) => h.difficultyLevel === criteria);
+            if (existingHikes.length === 0) {
+              return `${this.username} has not done any ${criteria} hiking yet`;
+            }
+            const hike = existingHikes.sort((a, b) => a.time - b.time)[0];
+            return `${this.username}'s best ${criteria} hike is ${hike.peak} peak, for ${hike.time} hours`;
+          }
+          return `All hiking records:\n${this.listOfHikes
+            .map((h) => `${this.username} hiked ${h.peak} for ${h.time} hours`)
+            .join('\n')}`;
     }
 }
 const user = new SmartHike('Vili');
@@ -52,6 +65,6 @@ console.log(user.showRecord('easy'));
 user.addGoal('Vihren', 2914);
 user.hike('Vihren', 4, 'hard');
 console.log(user.showRecord('hard'));
-// user.addGoal('Rui', 1706);
-// user.hike('Rui', 3, 'easy');
-// console.log(user.showRecord('all'));
+user.addGoal('Rui', 1706);
+user.hike('Rui', 3, 'easy');
+console.log(user.showRecord('all'));
