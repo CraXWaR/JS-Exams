@@ -1,5 +1,5 @@
 class SmartHike {
-    constructor (username) {
+    constructor(username) {
         this.username = username
         this.goals = {}
         this.listOfHikes = []
@@ -44,16 +44,16 @@ class SmartHike {
     showRecord(criteria) {
         if (this.listOfHikes.length === 0) {
             return `${this.username} has not done any hiking yet`;
-          }
-          if (criteria === 'hard' || criteria === 'easy') {
+        }
+        if (criteria === 'hard' || criteria === 'easy') {
             const existingHikes = this.listOfHikes.filter((h) => h.difficultyLevel === criteria);
             if (existingHikes.length === 0) {
-              return `${this.username} has not done any ${criteria} hiking yet`;
+                return `${this.username} has not done any ${criteria} hiking yet`;
             }
             const hike = existingHikes.sort((a, b) => a.time - b.time)[0];
             return `${this.username}'s best ${criteria} hike is ${hike.peak} peak, for ${hike.time} hours`;
-          }
-          return `All hiking records:\n${this.listOfHikes
+        }
+        return `All hiking records:\n${this.listOfHikes
             .map((h) => `${this.username} hiked ${h.peak} for ${h.time} hours`)
             .join('\n')}`;
     }

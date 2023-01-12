@@ -1,5 +1,5 @@
-const {expect} = require('chai')
-const {bookSelection, carService} = require('../03. Car service_Resources')
+const { expect } = require('chai')
+const { carService } = require('../03. Car service_Resources')
 
 describe("carService", () => {
     describe("isItExpensive", () => {
@@ -18,7 +18,7 @@ describe("carService", () => {
             expect(carService.discount(8, 100)).to.be.equal(`Discount applied! You saved ${30}$`)
             expect(carService.discount(10, 100)).to.be.equal(`Discount applied! You saved ${30}$`)
             expect(carService.discount(1, 100)).to.be.equal('You cannot apply a discount')
-            
+
             expect(() => carService.discount('2', '100')).throw("Invalid input")
             expect(() => carService.discount(2, '100')).throw("Invalid input")
             expect(() => carService.discount('2', 100)).throw("Invalid input")
@@ -29,10 +29,10 @@ describe("carService", () => {
     })
     describe('partsToBuy', () => {
         it("test3", () => {
-            expect(() => carService.partsToBuy({ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 },(["blowoff valve", "injectors"]))).to.throw( "Invalid input")
-            expect(() => carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }],("blowoff valve", "injectors"))).to.throw( "Invalid input")
-            expect(carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }],(["blowoff valve", "injectors"]))).to.be.equal(145)
-            expect(carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }],([]))).to.be.equal(0)
+            expect(() => carService.partsToBuy({ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }, (["blowoff valve", "injectors"]))).to.throw("Invalid input")
+            expect(() => carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }], ("blowoff valve", "injectors"))).to.throw("Invalid input")
+            expect(carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }], (["blowoff valve", "injectors"]))).to.be.equal(145)
+            expect(carService.partsToBuy([{ part: "blowoff valve", price: 145 }, { part: "coil springs", price: 230 }], ([]))).to.be.equal(0)
         });
     })
 })

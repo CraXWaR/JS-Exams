@@ -17,12 +17,12 @@ function solve() {
   function onPublish(e) {
     e.preventDefault();
 
-    let makeCar = input.make.value
-    let modelCar = input.model.value
-    let yearCar = input.year.value
-    let fuelCar = input.fuel.value
-    let originalCostCar = input.originalCost.value
-    let sellingPriceCar = input.sellingPrice.value
+    let makeCar = input.make.value;
+    let modelCar = input.model.value;
+    let yearCar = input.year.value;
+    let fuelCar = input.fuel.value;
+    let originalCostCar = input.originalCost.value;
+    let sellingPriceCar = input.sellingPrice.value;
 
     if (makeCar == "" || modelCar == "" || yearCar == "" || fuelCar == "" || originalCostCar == "" || sellingPriceCar == "") {
       return;
@@ -87,7 +87,7 @@ function solve() {
     input.originalCost.value = ''
     input.sellingPrice.value = ''
 
-    function onEdit(e){
+    function onEdit(e) {
       //e.currentTarget.btnEdit
       input.make.value = makeCar
       input.model.value = modelCar
@@ -102,9 +102,9 @@ function solve() {
       //e.currentTarget.btnSell
       const carList = document.getElementById("cars-list")
       let profit = document.getElementById("profit")
-     
+
       let diff = Number(sellingPriceCar) - Number(originalCostCar)
-      
+
       let profitSum = Number(profit.textContent)
       profitSum += diff
       profit.textContent = `${profitSum.toFixed(2)}`
@@ -118,7 +118,7 @@ function solve() {
       let spanYear = document.createElement('span')
       spanYear.textContent = `${yearCar}`
 
-      let spanDiff = document.createElement('span') 
+      let spanDiff = document.createElement('span')
       spanDiff.textContent = `${diff}`
 
       liElement.appendChild(spanModelCar)
